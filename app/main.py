@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import health, users, items
+from app.routers import health, users, items, uc_calculator
 from app.middleware.cors import get_cors_middleware
 
 
@@ -28,6 +28,7 @@ def create_app() -> FastAPI:
     app.include_router(health.router, tags=["health"])
     app.include_router(users.router, prefix="/api/users", tags=["users"])
     app.include_router(items.router, prefix="/api/items", tags=["items"])
+    app.include_router(uc_calculator.router, prefix="/api/uc", tags=["universal-credit"])
 
     return app
 

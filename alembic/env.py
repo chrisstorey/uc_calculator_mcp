@@ -15,6 +15,8 @@ from app.config import settings
 # Import all models for alembic autogenerate
 from app.models.user import User
 from app.models.item import Item
+from app.models.uc_calculation import UCClaim
+from app.models.lha_rates import LHARate
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
