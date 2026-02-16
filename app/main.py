@@ -1,0 +1,35 @@
+"""Main FastAPI application entry point."""
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.config import settings
+from app.routers import health, users, items
+from app.middleware.cors import get_cors_middleware
+
+
+def create_app() -> FastAPI:
+    """Create and configure the FastAPI application."""
+    app = FastAPI(
+        title=settings.APP_NAME,
+        description=settings.APP_DESCRIPTION,
+        version=settings.APP_VERSION,
+    )
+
+    # Add middleware
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.CORS_ORIGINS,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    # Include routers
+    app.include_router(health.router, tags=["health"])
+    app.include_router(users.router, prefix="/api/users", tags=["users"])
+    app.include_router(items.router, prefix="/api/items", tags=["items"])
+
+    return app
+
+
+app = create_app()
