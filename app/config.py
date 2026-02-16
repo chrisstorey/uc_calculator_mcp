@@ -7,9 +7,9 @@ class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
     # Application
-    APP_NAME: str = "FastAPI Project"
-    APP_DESCRIPTION: str = "A general FastAPI project outline"
-    APP_VERSION: str = "0.1.0"
+    APP_NAME: str = "Universal Credit Calculator"
+    APP_DESCRIPTION: str = "MCP Server for precise Universal Credit calculations"
+    APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
 
     # Server

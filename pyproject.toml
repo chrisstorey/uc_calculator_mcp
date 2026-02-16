@@ -7,7 +7,7 @@ name = "fastapi-project"
 version = "0.1.0"
 description = "A general FastAPI project outline"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 authors = [
     {name = "Your Name", email = "your.email@example.com"}
 ]
@@ -20,7 +20,12 @@ dependencies = [
     "python-jose[cryptography]>=3.3.0",
     "passlib[bcrypt]>=1.7.4",
     "python-multipart>=0.0.6",
+    "mcp>=0.8.0",
+    "requests>=2.31.0",
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
 
 [project.optional-dependencies]
 dev = [
@@ -46,14 +51,14 @@ dev-dependencies = [
 
 [tool.black]
 line-length = 88
-target-version = ["py39", "py310", "py311"]
+target-version = ["py310", "py311"]
 
 [tool.ruff]
 line-length = 88
-target-version = "py39"
+target-version = "py310"
 
 [tool.mypy]
-python_version = "3.9"
+python_version = "3.10"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = false
